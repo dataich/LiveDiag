@@ -100,7 +100,7 @@
         }
 
         //don't want to use image cache, so create filename by arc4random
-        __block __strong NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
+        NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
 
         [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ --size=2048x2048 -o %@ /dev/stdin", diag, command, outPath]]];
 
@@ -108,16 +108,16 @@
 
         int pid = echo.processIdentifier;
 
-        // temporarily, convert diag part to <img id='{process identifier}'>
-        NSString *imgTag = [NSString stringWithFormat:@"<img id='%d'>", pid];
+        // temporarily, convert diag part to <img id='{process identifier}' prepareSrc='{file path}'>
+        NSString *imgTag = [NSString stringWithFormat:@"<img id='%d' prepareSrc='%@'>", pid, outPath];
         markDown = [markDown stringByReplacingCharactersInRange:match.range withString:imgTag];
 
         __block __weak LDDocument *weakSelf = self;
-        // after task terminated, add 'src' attribute to <img> using jQuery
+        // after task terminated, add 'src' attribute to <img> from 'prapareSrc' attribute using jQuery
         // to pinpoint a <img>, use process identifier
         echo.terminationHandler = ^(NSTask *task) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *script = [NSString stringWithFormat:@"$('#%d').attr('src', 'file://%@');", pid, outPath];
+                NSString *script = [NSString stringWithFormat:@"$('#%d').attr('src', $('#%d').attr('prepareSrc'));", pid, pid];
                 [weakSelf.webView stringByEvaluatingJavaScriptFromString:script];
             });
         };
