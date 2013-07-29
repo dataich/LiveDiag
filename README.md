@@ -1,9 +1,14 @@
 LiveDiag
 ========
 
-Live Preview App for Markdown+blockdiag
+Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag)
 
-![image](LiveDiag.png)
+![image](sample/blockdiag.png)
+![image](sample/seqdiag.png)
+![image](sample/actdiag.png)
+![image](sample/nwdiag.png)
+
+all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
 ## Platform
 
@@ -11,6 +16,26 @@ Live Preview App for Markdown+blockdiag
 
 ## Requirement
 
-- [blockdiag](http://blockdiag.com/) (add path to `/usr/bin/blockdiag`[^1])
+- [blockdiag](http://blockdiag.com/) (add path to `/usr/bin/blockdiag`)
+- [seqdiag](http://blockdiag.com/) (add path to `/usr/bin/seqdiag`)
+- [actdiag](http://blockdiag.com/) (add path to `/usr/bin/actdiag`)
+- [nwdiag](http://blockdiag.com/) (add path to `/usr/bin/nwdiag`)
 
-[^1]: at this time cannot load user $PATH. I'm trying to improve it.
+	**at this time cannot load user $PATH. I'm trying to improve it.**
+
+## Feature
+
+- live preview for following content
+	- Markdown
+	- blockdiag
+	- seqdiag
+	- actdiag
+	- nwdiag
+- printing
+
+## Give me your feedback
+
+If you have any suggestion and find bugs, please let me know.
+
+- Contact to [@dataich](https://twitter.com/dataich)
+- Post to [Github Issues](https://github.com/dataich/LiveDiag/issues)

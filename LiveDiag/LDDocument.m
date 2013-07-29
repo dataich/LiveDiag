@@ -81,7 +81,7 @@
 
     //loop for parts of diag
     NSError *error;
-    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
     NSArray *matches;
     while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
         NSTextCheckingResult *match = matches[0];
@@ -93,10 +93,16 @@
         NSTask *echo = [[NSTask alloc] init];
         [echo setLaunchPath:@"/bin/bash"];
 
+        NSString *command = [markDown substringWithRange:[match rangeAtIndex:1]];
+        NSLog(@"%@", command);
+        if(!command || [command isEqualToString:@""]) {
+            command = @"blockdiag";
+        }
+
         //don't want to use image cache, so create filename by arc4random
         __block __strong NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
 
-        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | blockdiag -o %@ /dev/stdin", diag, outPath]]];
+        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ -o %@ /dev/stdin", diag, command, outPath]]];
 
         [echo launch];
 
