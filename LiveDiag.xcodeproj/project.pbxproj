@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A11A97C17A6B50800E94748 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A11A97B17A6B50800E94748 /* Cocoa.framework */; };
+		0A11A98617A6B50800E94748 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A98417A6B50800E94748 /* InfoPlist.strings */; };
+		0A11A98817A6B50800E94748 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A11A98717A6B50800E94748 /* main.m */; };
+		0A11A98C17A6B50800E94748 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A98A17A6B50800E94748 /* Credits.rtf */; };
+		0A11A98F17A6B50800E94748 /* LDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A11A98E17A6B50800E94748 /* LDDocument.m */; };
+		0A11A99217A6B50800E94748 /* LDDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A99017A6B50800E94748 /* LDDocument.xib */; };
+		0A11A99517A6B50800E94748 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A99317A6B50800E94748 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A11A97817A6B50800E94748 /* LiveDiag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveDiag.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A11A97B17A6B50800E94748 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0A11A97E17A6B50800E94748 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0A11A97F17A6B50800E94748 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0A11A98017A6B50800E94748 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0A11A98317A6B50800E94748 /* LiveDiag-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiveDiag-Info.plist"; sourceTree = "<group>"; };
+		0A11A98517A6B50800E94748 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0A11A98717A6B50800E94748 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0A11A98917A6B50800E94748 /* LiveDiag-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiveDiag-Prefix.pch"; sourceTree = "<group>"; };
+		0A11A98B17A6B50800E94748 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0A11A98D17A6B50800E94748 /* LDDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LDDocument.h; sourceTree = "<group>"; };
+		0A11A98E17A6B50800E94748 /* LDDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDDocument.m; sourceTree = "<group>"; };
+		0A11A99117A6B50800E94748 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LDDocument.xib; sourceTree = "<group>"; };
+		0A11A99417A6B50800E94748 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A11A97517A6B50800E94748 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A11A97C17A6B50800E94748 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A11A96F17A6B50800E94748 = {
+			isa = PBXGroup;
+			children = (
+				0A11A98117A6B50800E94748 /* LiveDiag */,
+				0A11A97A17A6B50800E94748 /* Frameworks */,
+				0A11A97917A6B50800E94748 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0A11A97917A6B50800E94748 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A11A97817A6B50800E94748 /* LiveDiag.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A11A97A17A6B50800E94748 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A11A97B17A6B50800E94748 /* Cocoa.framework */,
+				0A11A97D17A6B50800E94748 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0A11A97D17A6B50800E94748 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A11A97E17A6B50800E94748 /* AppKit.framework */,
+				0A11A97F17A6B50800E94748 /* CoreData.framework */,
+				0A11A98017A6B50800E94748 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0A11A98117A6B50800E94748 /* LiveDiag */ = {
+			isa = PBXGroup;
+			children = (
+				0A11A98D17A6B50800E94748 /* LDDocument.h */,
+				0A11A98E17A6B50800E94748 /* LDDocument.m */,
+				0A11A99017A6B50800E94748 /* LDDocument.xib */,
+				0A11A99317A6B50800E94748 /* MainMenu.xib */,
+				0A11A98217A6B50800E94748 /* Supporting Files */,
+			);
+			path = LiveDiag;
+			sourceTree = "<group>";
+		};
+		0A11A98217A6B50800E94748 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A11A98317A6B50800E94748 /* LiveDiag-Info.plist */,
+				0A11A98417A6B50800E94748 /* InfoPlist.strings */,
+				0A11A98717A6B50800E94748 /* main.m */,
+				0A11A98917A6B50800E94748 /* LiveDiag-Prefix.pch */,
+				0A11A98A17A6B50800E94748 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A11A97717A6B50800E94748 /* LiveDiag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A11A99817A6B50800E94748 /* Build configuration list for PBXNativeTarget "LiveDiag" */;
+			buildPhases = (
+				0A11A97417A6B50800E94748 /* Sources */,
+				0A11A97517A6B50800E94748 /* Frameworks */,
+				0A11A97617A6B50800E94748 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveDiag;
+			productName = LiveDiag;
+			productReference = 0A11A97817A6B50800E94748 /* LiveDiag.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A11A97017A6B50800E94748 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LD;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Taichiro Yoshida";
+			};
+			buildConfigurationList = 0A11A97317A6B50800E94748 /* Build configuration list for PBXProject "LiveDiag" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0A11A96F17A6B50800E94748;
+			productRefGroup = 0A11A97917A6B50800E94748 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A11A97717A6B50800E94748 /* LiveDiag */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A11A97617A6B50800E94748 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A11A98617A6B50800E94748 /* InfoPlist.strings in Resources */,
+				0A11A98C17A6B50800E94748 /* Credits.rtf in Resources */,
+				0A11A99217A6B50800E94748 /* LDDocument.xib in Resources */,
+				0A11A99517A6B50800E94748 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A11A97417A6B50800E94748 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A11A98817A6B50800E94748 /* main.m in Sources */,
+				0A11A98F17A6B50800E94748 /* LDDocument.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0A11A98417A6B50800E94748 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A11A98517A6B50800E94748 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0A11A98A17A6B50800E94748 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A11A98B17A6B50800E94748 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		0A11A99017A6B50800E94748 /* LDDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A11A99117A6B50800E94748 /* en */,
+			);
+			name = LDDocument.xib;
+			sourceTree = "<group>";
+		};
+		0A11A99317A6B50800E94748 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A11A99417A6B50800E94748 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0A11A99617A6B50800E94748 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0A11A99717A6B50800E94748 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0A11A99917A6B50800E94748 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveDiag/LiveDiag-Prefix.pch";
+				INFOPLIST_FILE = "LiveDiag/LiveDiag-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0A11A99A17A6B50800E94748 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveDiag/LiveDiag-Prefix.pch";
+				INFOPLIST_FILE = "LiveDiag/LiveDiag-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A11A97317A6B50800E94748 /* Build configuration list for PBXProject "LiveDiag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A11A99617A6B50800E94748 /* Debug */,
+				0A11A99717A6B50800E94748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A11A99817A6B50800E94748 /* Build configuration list for PBXNativeTarget "LiveDiag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A11A99917A6B50800E94748 /* Debug */,
+				0A11A99A17A6B50800E94748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A11A97017A6B50800E94748 /* Project object */;
+}
