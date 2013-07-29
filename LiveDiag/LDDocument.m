@@ -7,6 +7,7 @@
 //
 
 #import "LDDocument.h"
+#import <GHMarkdownParser/GHMarkdownParser.h>
 
 @implementation LDDocument
 
@@ -46,5 +47,15 @@
     @throw exception;
     return YES;
 }
+
+-(void)textDidChange:(NSNotification *)notification {
+    NSString *markDown = [self.textView.textStorage string];
+
+    NSString *html = markDown.flavoredHTMLStringFromMarkdown;
+    html = [NSString stringWithFormat:NSLocalizedString(@"%@%@base.html", nil), html];
+
+    [[self.webView mainFrame] loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
+}
+
 
 @end
