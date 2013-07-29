@@ -27,8 +27,20 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
-
     self.textView.font = [NSFont userFixedPitchFontOfSize:14];
+
+	NSURL *fileURL = [self fileURL];
+	if (!fileURL) {
+		return;
+	}
+
+	NSString *markdown = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:fileURL] encoding:NSUTF8StringEncoding];
+	if (!markdown) {
+		return;
+	}
+
+	[self.textView setString:markdown];
+    [self textViewContentToWebView];
 }
 
 + (BOOL)autosavesInPlace
@@ -45,12 +57,17 @@
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return YES;
+    if (outError != NULL ) {
+		*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:NULL];
+	}
+    return TRUE;
 }
 
 -(void)textDidChange:(NSNotification *)notification {
+    [self textViewContentToWebView];
+}
+
+-(void)textViewContentToWebView {
     NSString *markDown = [self.textView.textStorage string];
 
     //loop for parts of diag
