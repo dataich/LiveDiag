@@ -28,7 +28,7 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
-    self.textView.font = [NSFont userFixedPitchFontOfSize:14];
+    self.textView.font = [NSFont userFixedPitchFontOfSize:12];
 
 	NSURL *fileURL = [self fileURL];
 	if (!fileURL) {
