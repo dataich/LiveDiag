@@ -63,6 +63,13 @@
     return TRUE;
 }
 
+- (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings error:(NSError *__autoreleasing *)outError
+{
+    NSView *view = [[[self.webView mainFrame] frameView] documentView];
+    NSPrintOperation *operation = [NSPrintOperation printOperationWithView:view printInfo:[self printInfo]];
+    return operation;
+}
+
 -(void)textDidChange:(NSNotification *)notification {
     [self textViewContentToWebView];
 }
