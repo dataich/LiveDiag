@@ -27,6 +27,8 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
+
+    self.textView.font = [NSFont userFixedPitchFontOfSize:14];
 }
 
 + (BOOL)autosavesInPlace
