@@ -102,7 +102,7 @@
         //don't want to use image cache, so create filename by arc4random
         __block __strong NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
 
-        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ -o %@ /dev/stdin", diag, command, outPath]]];
+        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ --size=2048x2048 -o %@ /dev/stdin", diag, command, outPath]]];
 
         [echo launch];
 
