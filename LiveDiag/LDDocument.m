@@ -70,11 +70,13 @@
     return operation;
 }
 
--(void)textDidChange:(NSNotification *)notification {
+-(void)textDidChange:(NSNotification *)notification
+{
     [self textViewContentToWebView];
 }
 
--(void)textViewContentToWebView {
+-(void)textViewContentToWebView
+{
     NSString *markDown = [self.textView.textStorage string];
 
     //loop for parts of diag
