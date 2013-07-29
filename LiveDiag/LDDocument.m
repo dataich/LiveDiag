@@ -7,6 +7,7 @@
 //
 
 #import "LDDocument.h"
+#import "NSString+Count.h"
 #import <GHMarkdownParser/GHMarkdownParser.h>
 
 @implementation LDDocument
@@ -79,49 +80,51 @@
 {
     NSString *markDown = [self.textView.textStorage string];
 
-    //loop for parts of diag
-    NSError *error;
-    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
-    NSArray *matches;
-    while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
-        NSTextCheckingResult *match = matches[0];
+    if([markDown countOfString:@"{"] == [markDown countOfString:@"}"]) {
+        //loop for parts of diag
+        NSError *error;
+        NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+        NSArray *matches;
+        while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
+            NSTextCheckingResult *match = matches[0];
 
-        NSString *diag = [markDown substringWithRange:match.range];
-        diag = [diag stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]; //convert " to ' for parse diag
+            NSString *diag = [markDown substringWithRange:match.range];
+            diag = [diag stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]; //convert " to ' for parse diag
 
-        // task to execute blockdiag
-        NSTask *echo = [[NSTask alloc] init];
-        [echo setLaunchPath:@"/bin/bash"];
+            // task to execute blockdiag
+            NSTask *echo = [[NSTask alloc] init];
+            [echo setLaunchPath:@"/bin/bash"];
 
-        NSString *command = [markDown substringWithRange:[match rangeAtIndex:1]];
-        NSLog(@"%@", command);
-        if(!command || [command isEqualToString:@""]) {
-            command = @"blockdiag";
-        }
+            NSString *command = [markDown substringWithRange:[match rangeAtIndex:1]];
+            NSLog(@"%@", command);
+            if(!command || [command isEqualToString:@""]) {
+                command = @"blockdiag";
+            }
 
-        //don't want to use image cache, so create filename by arc4random
-        NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
+            //don't want to use image cache, so create filename by arc4random
+            NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
 
-        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ --size=2048x2048 -o %@ /dev/stdin", diag, command, outPath]]];
+            [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ --size=2048x2048 -o %@ /dev/stdin", diag, command, outPath]]];
 
-        [echo launch];
+            [echo launch];
 
-        int pid = echo.processIdentifier;
+            int pid = echo.processIdentifier;
 
-        // temporarily, convert diag part to <img id='{process identifier}' prepareSrc='{file path}'>
-        NSString *imgTag = [NSString stringWithFormat:@"<img id='%d' prepareSrc='%@'>", pid, outPath];
-        markDown = [markDown stringByReplacingCharactersInRange:match.range withString:imgTag];
+            // temporarily, convert diag part to <img id='{process identifier}' prepareSrc='{file path}'>
+            NSString *imgTag = [NSString stringWithFormat:@"<img id='%d' prepareSrc='%@'>", pid, outPath];
+            markDown = [markDown stringByReplacingCharactersInRange:match.range withString:imgTag];
 
-        __block __weak LDDocument *weakSelf = self;
-        // after task terminated, add 'src' attribute to <img> from 'prapareSrc' attribute using jQuery
-        // to pinpoint a <img>, use process identifier
-        echo.terminationHandler = ^(NSTask *task) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *script = [NSString stringWithFormat:@"$('#%d').attr('src', $('#%d').attr('prepareSrc'));", pid, pid];
-                [weakSelf.webView stringByEvaluatingJavaScriptFromString:script];
-            });
+            __block __weak LDDocument *weakSelf = self;
+            // after task terminated, add 'src' attribute to <img> from 'prapareSrc' attribute using jQuery
+            // to pinpoint a <img>, use process identifier
+            echo.terminationHandler = ^(NSTask *task) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSString *script = [NSString stringWithFormat:@"$('#%d').attr('src', $('#%d').attr('prepareSrc'));", pid, pid];
+                    [weakSelf.webView stringByEvaluatingJavaScriptFromString:script];
+                });
+            };
         };
-    };
+    }
     
     NSString *html = markDown.flavoredHTMLStringFromMarkdown;
     html = [NSString stringWithFormat:NSLocalizedString(@"%@%@base.html", nil), html];
