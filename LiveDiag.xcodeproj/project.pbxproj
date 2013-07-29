@@ -14,6 +14,7 @@
 		0A11A98F17A6B50800E94748 /* LDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A11A98E17A6B50800E94748 /* LDDocument.m */; };
 		0A11A99217A6B50800E94748 /* LDDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A99017A6B50800E94748 /* LDDocument.xib */; };
 		0A11A99517A6B50800E94748 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A99317A6B50800E94748 /* MainMenu.xib */; };
+		0A41C46817A6B885008F9FEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A41C46717A6B885008F9FEA /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		0A11A98E17A6B50800E94748 /* LDDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDDocument.m; sourceTree = "<group>"; };
 		0A11A99117A6B50800E94748 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LDDocument.xib; sourceTree = "<group>"; };
 		0A11A99417A6B50800E94748 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0A41C46717A6B885008F9FEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A41C46817A6B885008F9FEA /* WebKit.framework in Frameworks */,
 				0A11A97C17A6B50800E94748 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +68,7 @@
 		0A11A97A17A6B50800E94748 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A41C46717A6B885008F9FEA /* WebKit.framework */,
 				0A11A97B17A6B50800E94748 /* Cocoa.framework */,
 				0A11A97D17A6B50800E94748 /* Other Frameworks */,
 			);
@@ -316,6 +320,7 @@
 				0A11A99A17A6B50800E94748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
