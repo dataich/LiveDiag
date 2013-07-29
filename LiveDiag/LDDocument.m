@@ -91,12 +91,12 @@
 
         // task to execute blockdiag
         NSTask *echo = [[NSTask alloc] init];
-        [echo setLaunchPath:@"/bin/sh"];
+        [echo setLaunchPath:@"/bin/bash"];
 
         //don't want to use image cache, so create filename by arc4random
         __block __strong NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
 
-        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | /usr/local/pythonbrew/pythons/Python-2.7.2/bin/blockdiag -o %@ /dev/stdin", diag, outPath]]];
+        [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | blockdiag -o %@ /dev/stdin", diag, outPath]]];
 
         [echo launch];
 
