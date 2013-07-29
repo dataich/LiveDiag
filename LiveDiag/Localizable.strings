@@ -7,13 +7,21 @@
 */
 
 "%@%@base.html" = "
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv='Content-Style-Type' content='text/css' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<link rel='stylesheet' href='bootstrap.min.css' type='text/css' />
+<link rel='stylesheet' href='application.css' type='text/css' />
 <script src='jquery-2.0.3.min.js'></script>
 </head>
 <body>
 %@
+<script>
+$(document).ready(function() {
+    $('table').addClass('table table-striped table-bordered');
+});
+</script>
 </body>
 </html>
 ";
