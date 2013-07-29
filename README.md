@@ -3,10 +3,10 @@ LiveDiag
 
 Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag)
 
-![image](sample/blockdiag.png)
-![image](sample/seqdiag.png)
-![image](sample/actdiag.png)
-![image](sample/nwdiag.png)
+![image](Sample/blockdiag.png)
+![image](Sample/seqdiag.png)
+![image](Sample/actdiag.png)
+![image](Sample/nwdiag.png)
 
 all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
