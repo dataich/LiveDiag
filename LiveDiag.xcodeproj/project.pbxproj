@@ -16,6 +16,7 @@
 		0A11A99517A6B50800E94748 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A11A99317A6B50800E94748 /* MainMenu.xib */; };
 		0A41C46817A6B885008F9FEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A41C46717A6B885008F9FEA /* WebKit.framework */; };
 		0A4A5F3517A7A54800BE1CF9 /* NSString+Count.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4A5F3417A7A54800BE1CF9 /* NSString+Count.m */; };
+		0A675C5617A88BBC00EDEB47 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0A675C5517A88BBC00EDEB47 /* Icon.icns */; };
 		0AEF9BD917A743B600A2A3B1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BD617A743B600A2A3B1 /* Localizable.strings */; };
 		0AEF9BDA17A743CB00A2A3B1 /* jquery-2.0.3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BD517A743B600A2A3B1 /* jquery-2.0.3.min.js */; };
 		0AEF9BE017A751D000A2A3B1 /* application.css in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BDF17A751D000A2A3B1 /* application.css */; };
@@ -41,6 +42,7 @@
 		0A41C46717A6B885008F9FEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0A4A5F3317A7A54800BE1CF9 /* NSString+Count.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Count.h"; sourceTree = "<group>"; };
 		0A4A5F3417A7A54800BE1CF9 /* NSString+Count.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Count.m"; sourceTree = "<group>"; };
+		0A675C5517A88BBC00EDEB47 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		0AEF9BD517A743B600A2A3B1 /* jquery-2.0.3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-2.0.3.min.js"; sourceTree = "<group>"; };
 		0AEF9BD617A743B600A2A3B1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0AEF9BDF17A751D000A2A3B1 /* application.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = application.css; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				0AEF9BE117A7551000A2A3B1 /* bootstrap.min.css */,
 				0AEF9BDF17A751D000A2A3B1 /* application.css */,
 				0AEF9BD617A743B600A2A3B1 /* Localizable.strings */,
+				0A675C5517A88BBC00EDEB47 /* Icon.icns */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				0AEF9BD917A743B600A2A3B1 /* Localizable.strings in Resources */,
 				0AEF9BE017A751D000A2A3B1 /* application.css in Resources */,
 				0AEF9BE217A7551000A2A3B1 /* bootstrap.min.css in Resources */,
+				0A675C5617A88BBC00EDEB47 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
