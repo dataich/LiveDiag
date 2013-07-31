@@ -10,6 +10,10 @@ Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag)
 
 all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
+## Release
+
+[1.0.0](https://github.com/dataich/LiveDiag/releases/tag/1.0.0)
+
 ## Platform
 
 - Mac OS 10.8+
