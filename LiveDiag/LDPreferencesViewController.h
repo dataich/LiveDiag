@@ -15,7 +15,9 @@
 @property (weak) IBOutlet NSTextField *textActdiag;
 @property (weak) IBOutlet NSTextField *textNwdiag;
 @property (weak) IBOutlet NSUserDefaultsController *defaultsController;
+@property (unsafe_unretained) IBOutlet NSWindow *windowPreferences;
 
 - (IBAction)browse:(NSButton *)sender;
+- (IBAction)save:(id)sender;
 
 @end

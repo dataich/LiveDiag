@@ -14,6 +14,28 @@
 
 @implementation LDPreferencesViewController
 
+/**
+ * save user preferences to NSUserDefaultsController
+ * I bind NSTextField to NSUserDefaultsController on xib, but it's saved only when the field loses focus...
+ * Provisionally I create 'save' action which sent from 'OK' button.
+ */
+- (IBAction)save:(id)sender {
+    [self setValueToDefauls:self.textBlockdiag.stringValue forKeyPath:@"values.path_blockdiag"];
+    [self setValueToDefauls:self.textSeqdiag.stringValue forKeyPath:@"values.path_seqdiag"];
+    [self setValueToDefauls:self.textActdiag.stringValue forKeyPath:@"values.path_actdiag"];
+    [self setValueToDefauls:self.textNwdiag.stringValue forKeyPath:@"values.path_nwdiag"];
+
+    [self.windowPreferences close];
+}
+
+- (void)setValueToDefauls:(NSString *)value forKeyPath:(NSString *)forKeyPath{
+    if(value == nil || [value isEqualToString:@""]) {
+        [self.defaultsController setValue:nil forKeyPath:forKeyPath];
+    } else {
+        [self.defaultsController setValue:value forKeyPath:forKeyPath];
+    }
+}
+
 - (IBAction)browse:(NSButton *)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     [panel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
