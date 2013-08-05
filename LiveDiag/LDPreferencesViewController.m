@@ -24,6 +24,7 @@
     [self setValueToDefauls:self.textSeqdiag.stringValue forKeyPath:@"values.path_seqdiag"];
     [self setValueToDefauls:self.textActdiag.stringValue forKeyPath:@"values.path_actdiag"];
     [self setValueToDefauls:self.textNwdiag.stringValue forKeyPath:@"values.path_nwdiag"];
+    [self setValueToDefauls:self.textRackdiag.stringValue forKeyPath:@"values.path_rackdiag"];
 
     [self.windowPreferences close];
 }
@@ -53,6 +54,9 @@
                     break;
                 case 3:
                     self.textNwdiag.stringValue = path;
+                    break;
+                case 4:
+                    self.textRackdiag.stringValue = path;
                     break;
                 default:
                     break;
