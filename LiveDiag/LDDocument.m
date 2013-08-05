@@ -85,7 +85,7 @@
     if([markDown countOfString:@"{"] == [markDown countOfString:@"}"]) {
         //loop for parts of diag
         NSError *error;
-        NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+        NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
         NSArray *matches;
         while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
             NSTextCheckingResult *match = matches[0];

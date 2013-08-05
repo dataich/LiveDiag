@@ -14,6 +14,7 @@
 @property (weak) IBOutlet NSTextField *textSeqdiag;
 @property (weak) IBOutlet NSTextField *textActdiag;
 @property (weak) IBOutlet NSTextField *textNwdiag;
+@property (weak) IBOutlet NSTextField *textRackdiag;
 @property (weak) IBOutlet NSUserDefaultsController *defaultsController;
 @property (unsafe_unretained) IBOutlet NSWindow *windowPreferences;
 
