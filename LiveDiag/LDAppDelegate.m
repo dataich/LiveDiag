@@ -28,7 +28,9 @@
 }
 
 - (void)showPreferences {
-    [self.windowPreferences makeKeyAndOrderFront:self];
+    [NSApp runModalForWindow:self.windowPreferences];
+    [self.windowPreferences orderOut:self];
+//    [self.windowPreferences makeKeyAndOrderFront:self];
 }
 
 @end
