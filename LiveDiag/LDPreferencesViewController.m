@@ -26,7 +26,7 @@
     [self setValueToDefauls:self.textNwdiag.stringValue forKeyPath:@"values.path_nwdiag"];
     [self setValueToDefauls:self.textRackdiag.stringValue forKeyPath:@"values.path_rackdiag"];
 
-    [self.windowPreferences close];
+    [NSApp stopModalWithCode:0];
 }
 
 - (void)setValueToDefauls:(NSString *)value forKeyPath:(NSString *)forKeyPath{
