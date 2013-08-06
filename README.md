@@ -1,12 +1,14 @@
 LiveDiag
 ========
 
-Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag)
+Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag +rackdiag)
 
 ![image](Sample/blockdiag.png)
 ![image](Sample/seqdiag.png)
 ![image](Sample/actdiag.png)
 ![image](Sample/nwdiag.png)
+![image](Sample/rackdiag.png)
+
 
 all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
@@ -16,26 +18,15 @@ all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
 ## Requirement
 
-- [blockdiag](http://blockdiag.com/ja/blockdiag/introduction.html#id2) (add path to `/usr/bin/blockdiag`)
-- [seqdiag](http://blockdiag.com/ja/seqdiag/introduction.html#setup) (add path to `/usr/bin/seqdiag`)
-- [actdiag](http://blockdiag.com/ja/actdiag/introduction.html#setup) (add path to `/usr/bin/actdiag`)
-- [nwdiag](http://blockdiag.com/ja/nwdiag/introduction.html#setup) (add path to `/usr/bin/nwdiag`)
-
-	**at this time cannot load user $PATH. I'm trying to improve it.**
+- [blockdiag](http://blockdiag.com/ja/blockdiag/introduction.html#id2)
+- [seqdiag](http://blockdiag.com/ja/seqdiag/introduction.html#setup)
+- [actdiag](http://blockdiag.com/ja/actdiag/introduction.html#setup)
+- [nwdiag|rackdiag](http://blockdiag.com/ja/nwdiag/introduction.html#setup)
 
 ## Installation
-1. Install [blockdiag](http://blockdiag.com/ja/blockdiag/introduction.html#macosx-macports), [seqdiag](http://blockdiag.com/ja/seqdiag/introduction.html#setup), [actdiag](http://blockdiag.com/ja/actdiag/introduction.html#setup) and [nwdiag](http://blockdiag.com/ja/nwdiag/introduction.html#setup)
+1. Install [blockdiag](http://blockdiag.com/ja/blockdiag/introduction.html#macosx-macports), [seqdiag](http://blockdiag.com/ja/seqdiag/introduction.html#setup), [actdiag](http://blockdiag.com/ja/actdiag/introduction.html#setup) and [nwdiag|rackdiag](http://blockdiag.com/ja/nwdiag/introduction.html#setup)
 
-2. add path to /usr/bin
-
-	```
-	$ sudo ln -s {blockdiag path} /usr/bin/blockdiag
-	$ sudo ln -s {seqdiag path} /usr/bin/seqdiag
-	$ sudo ln -s {actdiag path} /usr/bin/actdiag
-	$ sudo ln -s {nwdiag path} /usr/bin/nwdiag
-	```
-
-3. Download LiveDiag.app and place it to /Applications
+2. Download [LiveDiag.app](https://github.com/dataich/LiveDiag/releases/download/1.0.0/LiveDiag.app.zip) and place it to /Applications
 
 ## Release
 
@@ -49,6 +40,7 @@ all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 	- seqdiag
 	- actdiag
 	- nwdiag
+	- rackdiag
 - printing
 
 ## Give me your feedback

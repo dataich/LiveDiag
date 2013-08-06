@@ -7,6 +7,8 @@
 //
 
 #import "LDDocument.h"
+#import "LDAppDelegate.h"
+#import "LDUtils.h"
 #import "NSString+Count.h"
 #import <GHMarkdownParser/GHMarkdownParser.h>
 
@@ -29,7 +31,7 @@
 {
     [super windowControllerDidLoadNib:aController];
     self.textView.font = [NSFont userFixedPitchFontOfSize:12];
-
+    
 	NSURL *fileURL = [self fileURL];
 	if (!fileURL) {
 		return;
@@ -83,7 +85,7 @@
     if([markDown countOfString:@"{"] == [markDown countOfString:@"}"]) {
         //loop for parts of diag
         NSError *error;
-        NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+        NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
         NSArray *matches;
         while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
             NSTextCheckingResult *match = matches[0];
@@ -100,6 +102,7 @@
             if(!command || [command isEqualToString:@""]) {
                 command = @"blockdiag";
             }
+            command = [LDUtils pathTo:command];
 
             //don't want to use image cache, so create filename by arc4random
             NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
@@ -118,10 +121,10 @@
             // after task terminated, add 'src' attribute to <img> from 'prapareSrc' attribute using jQuery
             // to pinpoint a <img>, use process identifier
             echo.terminationHandler = ^(NSTask *task) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSString *script = [NSString stringWithFormat:@"$('#%d').attr('src', $('#%d').attr('prepareSrc'));", pid, pid];
-                    [weakSelf.webView stringByEvaluatingJavaScriptFromString:script];
-                });
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSString *script = [NSString stringWithFormat:@"$('#%d').attr('src', $('#%d').attr('prepareSrc'));", pid, pid];
+                        [weakSelf.webView stringByEvaluatingJavaScriptFromString:script];
+                    });
             };
         };
     }
