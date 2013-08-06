@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,7 +20,7 @@
   <body>
       <div id="header">
         <nav>
-          <li class="fork"><a href="https://github.com/dataich/LiveDiag">Fork On GitHub</a></li>
+          <li class="fork"><a href="https://github.com/dataich/LiveDiag">View On GitHub</a></li>
           <li class="downloads"><a href="https://github.com/dataich/LiveDiag/zipball/master">ZIP</a></li>
           <li class="downloads"><a href="https://github.com/dataich/LiveDiag/tarball/master">TAR</a></li>
           <li class="title">DOWNLOADS</li>
@@ -40,9 +41,9 @@
         <h1>
 <a name="livediag" class="anchor" href="#livediag"><span class="octicon octicon-link"></span></a>LiveDiag</h1>
 
-<p>Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag)</p>
+<p>Live Preview App for Markdown+blockdiag(+seqdiag +actdiag +nwdiag +rackdiag)</p>
 
-<p><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/blockdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/seqdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/actdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/nwdiag.png" alt="image"></p>
+<p><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/blockdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/seqdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/actdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/nwdiag.png" alt="image"><img src="https://raw.github.com/dataich/LiveDiag/master/Sample/rackdiag.png" alt="image"></p>
 
 <p>all block code from <a href="http://blockdiag.com/">blockdiag.com</a>. Thanks!!</p>
 
@@ -55,38 +56,23 @@
 <a name="requirement" class="anchor" href="#requirement"><span class="octicon octicon-link"></span></a>Requirement</h2>
 
 <ul>
-<li>
-<a href="http://blockdiag.com/ja/blockdiag/introduction.html#id2">blockdiag</a> (add path to <code>/usr/bin/blockdiag</code>)</li>
-<li>
-<a href="http://blockdiag.com/ja/seqdiag/introduction.html#setup">seqdiag</a> (add path to <code>/usr/bin/seqdiag</code>)</li>
-<li>
-<a href="http://blockdiag.com/ja/actdiag/introduction.html#setup">actdiag</a> (add path to <code>/usr/bin/actdiag</code>)</li>
-<li>
-<p><a href="http://blockdiag.com/ja/nwdiag/introduction.html#setup">nwdiag</a> (add path to <code>/usr/bin/nwdiag</code>)</p>
-
-<p><strong>at this time cannot load user $PATH. I'm trying to improve it.</strong></p>
-</li>
+<li><a href="http://blockdiag.com/ja/blockdiag/introduction.html#id2">blockdiag</a></li>
+<li><a href="http://blockdiag.com/ja/seqdiag/introduction.html#setup">seqdiag</a></li>
+<li><a href="http://blockdiag.com/ja/actdiag/introduction.html#setup">actdiag</a></li>
+<li><a href="http://blockdiag.com/ja/nwdiag/introduction.html#setup">nwdiag|rackdiag</a></li>
 </ul><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <ol>
-<li><p>Install <a href="http://blockdiag.com/ja/blockdiag/introduction.html#macosx-macports">blockdiag</a>, <a href="http://blockdiag.com/ja/seqdiag/introduction.html#setup">seqdiag</a>, <a href="http://blockdiag.com/ja/actdiag/introduction.html#setup">actdiag</a> and <a href="http://blockdiag.com/ja/nwdiag/introduction.html#setup">nwdiag</a></p></li>
-<li>
-<p>add path to /usr/bin</p>
-
-<pre><code>$ sudo ln -s {blockdiag path} /usr/bin/blockdiag
-$ sudo ln -s {seqdiag path} /usr/bin/seqdiag
-$ sudo ln -s {actdiag path} /usr/bin/actdiag
-$ sudo ln -s {nwdiag path} /usr/bin/nwdiag
-</code></pre>
-</li>
-<li><p>Download LiveDiag.app and place it to /Applications</p></li>
+<li><p>Install <a href="http://blockdiag.com/ja/blockdiag/introduction.html#macosx-macports">blockdiag</a>, <a href="http://blockdiag.com/ja/seqdiag/introduction.html#setup">seqdiag</a>, <a href="http://blockdiag.com/ja/actdiag/introduction.html#setup">actdiag</a> and <a href="http://blockdiag.com/ja/nwdiag/introduction.html#setup">nwdiag|rackdiag</a></p></li>
+<li><p>Download <a href="https://github.com/dataich/LiveDiag/releases/download/1.1.0/LiveDiag.app.zip">LiveDiag.app</a> and place it to /Applications</p></li>
 </ol><h2>
 <a name="release" class="anchor" href="#release"><span class="octicon octicon-link"></span></a>Release</h2>
 
-<p><a href="https://github.com/dataich/LiveDiag/releases/tag/1.0.0">1.0.0</a></p>
-
-<h2>
+<ul>
+<li><a href="https://github.com/dataich/LiveDiag/releases/tag/1.1.0">1.1.0</a></li>
+<li><a href="https://github.com/dataich/LiveDiag/releases/tag/1.0.0">1.0.0</a></li>
+</ul><h2>
 <a name="feature" class="anchor" href="#feature"><span class="octicon octicon-link"></span></a>Feature</h2>
 
 <ul>
@@ -98,6 +84,7 @@ $ sudo ln -s {nwdiag path} /usr/bin/nwdiag
 <li>seqdiag</li>
 <li>actdiag</li>
 <li>nwdiag</li>
+<li>rackdiag</li>
 </ul>
 </li>
 <li>printing</li>
