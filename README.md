@@ -14,7 +14,7 @@ all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
 ## Platform
 
-- Mac OS 10.8+
+- Mac OS 10.7+
 
 ## Requirement
 
@@ -26,10 +26,11 @@ all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 ## Installation
 1. Install [blockdiag](http://blockdiag.com/ja/blockdiag/introduction.html#macosx-macports), [seqdiag](http://blockdiag.com/ja/seqdiag/introduction.html#setup), [actdiag](http://blockdiag.com/ja/actdiag/introduction.html#setup) and [nwdiag|rackdiag](http://blockdiag.com/ja/nwdiag/introduction.html#setup)
 
-2. Download [LiveDiag.app](https://github.com/dataich/LiveDiag/releases/download/1.1.0/LiveDiag.app.zip) and place it to /Applications
+2. Download [LiveDiag.app](https://github.com/dataich/LiveDiag/releases/download/1.1.1/LiveDiag.app.zip) and place it to /Applications
 
 ## Release
 
+- [1.1.1](https://github.com/dataich/LiveDiag/releases/tag/1.1.1)
 - [1.1.0](https://github.com/dataich/LiveDiag/releases/tag/1.1.0)
 - [1.0.0](https://github.com/dataich/LiveDiag/releases/tag/1.0.0)
 
