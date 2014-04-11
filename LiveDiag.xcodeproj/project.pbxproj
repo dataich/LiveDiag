@@ -23,7 +23,6 @@
 		0AEF9BD917A743B600A2A3B1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BD617A743B600A2A3B1 /* Localizable.strings */; };
 		0AEF9BDA17A743CB00A2A3B1 /* jquery-2.0.3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BD517A743B600A2A3B1 /* jquery-2.0.3.min.js */; };
 		0AEF9BE017A751D000A2A3B1 /* application.css in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BDF17A751D000A2A3B1 /* application.css */; };
-		0AEF9BE217A7551000A2A3B1 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF9BE117A7551000A2A3B1 /* bootstrap.min.css */; };
 		5D8B1745E30A47E6AFF0BD21 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48907CBA55644CEDBE5D9732 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +54,6 @@
 		0AEF9BD517A743B600A2A3B1 /* jquery-2.0.3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-2.0.3.min.js"; sourceTree = "<group>"; };
 		0AEF9BD617A743B600A2A3B1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0AEF9BDF17A751D000A2A3B1 /* application.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = application.css; sourceTree = "<group>"; };
-		0AEF9BE117A7551000A2A3B1 /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
 		48907CBA55644CEDBE5D9732 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27F5829857243A4A4840F75 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -139,7 +137,6 @@
 				0A11A98917A6B50800E94748 /* LiveDiag-Prefix.pch */,
 				0A11A98A17A6B50800E94748 /* Credits.rtf */,
 				0AEF9BD517A743B600A2A3B1 /* jquery-2.0.3.min.js */,
-				0AEF9BE117A7551000A2A3B1 /* bootstrap.min.css */,
 				0AEF9BDF17A751D000A2A3B1 /* application.css */,
 				0AEF9BD617A743B600A2A3B1 /* Localizable.strings */,
 				0A675C5517A88BBC00EDEB47 /* Icon.icns */,
@@ -219,7 +216,6 @@
 				0A11A99517A6B50800E94748 /* MainMenu.xib in Resources */,
 				0AEF9BD917A743B600A2A3B1 /* Localizable.strings in Resources */,
 				0AEF9BE017A751D000A2A3B1 /* application.css in Resources */,
-				0AEF9BE217A7551000A2A3B1 /* bootstrap.min.css in Resources */,
 				0A675C5617A88BBC00EDEB47 /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

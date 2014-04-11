@@ -6,14 +6,13 @@
   Copyright (c) 2013年 Taichiro Yoshida. All rights reserved.
 */
 
-"%@%@base.html" = "
+"%@%@%@base.html" = "
 <!DOCTYPE html>
 <html>
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<link rel='stylesheet' href='bootstrap.min.css' type='text/css' />
-<link rel='stylesheet' href='application.css' type='text/css' />
-<script src='jquery-2.0.3.min.js'></script>
+<link rel='stylesheet' href='%@application.css' type='text/css' />
+<script src='%@jquery-2.0.3.min.js'></script>
 </head>
 <body>
 %@

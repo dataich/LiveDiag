@@ -42,7 +42,7 @@
 		return;
 	}
 
-	[self.textView setString:markdown];
+	[self.textView setString:[self imagesToDiagramBlocks:markdown]];
     [self textViewContentToWebView];
 }
 
@@ -51,9 +51,60 @@
     return YES;
 }
 
+- (NSString *)imagesToDiagramBlocks:(NSString *)text
+{
+    NSMutableString *markdown = [NSMutableString stringWithString:text];
+
+    NSRegularExpression *re;
+    NSError *error;
+    NSString *template;
+
+    //comment in diagram block
+    re = [NSRegularExpression regularExpressionWithPattern:@"^<!--\n((blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\})\n-->" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    template = @"$1";
+    [re replaceMatchesInString:markdown options:0 range:NSMakeRange(0, markdown.length) withTemplate:template];
+
+    re = [NSRegularExpression regularExpressionWithPattern:@"\n^!\\[image]\\(diagrams.*?$" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    template = @"";
+    [re replaceMatchesInString:markdown options:0 range:NSMakeRange(0, markdown.length) withTemplate:template];
+
+    return (NSString *)markdown;
+}
+
+- (NSString *)diagramBlocksToImages:(NSString *)text
+{
+    NSMutableString *markdown = [NSMutableString stringWithString:text];
+
+    //comment out diagram block and add image syntax
+    NSError *error;
+    NSRegularExpression *re;
+    NSString *template;
+    re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    template = @"<!--\n$0\n-->\n![image](diagrams/0000.svg)";
+    [re replaceMatchesInString:markdown options:0 range:NSMakeRange(0, markdown.length) withTemplate:template];
+
+
+    //replace diagram filename number
+    re = [NSRegularExpression regularExpressionWithPattern:@"diagrams\\/(0000).svg" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    NSArray *matches;
+    int count = 0;
+    while([matches = [re matchesInString:markdown options:0 range:NSMakeRange(0, markdown.length)] count] > 0) {
+        NSTextCheckingResult *match = matches[0];
+
+        count = count + 1;
+        template = [NSString stringWithFormat:@"%04d", count];
+
+        [markdown replaceCharactersInRange:[match rangeAtIndex:1] withString:template];
+        NSLog(@"%@", markdown);
+    }
+
+    return (NSString *)markdown;
+}
+
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-	NSString *markdown = [self.textView string];
+    NSString *markdown = [self diagramBlocksToImages:[self.textView string]];
+
 	NSData *data = [markdown dataUsingEncoding:NSUTF8StringEncoding];
 	return data;
 }
@@ -81,13 +132,22 @@
 -(void)textViewContentToWebView
 {
     NSString *markDown = [self.textView.textStorage string];
+    NSURL *currentDirectory;
+    if(self.fileURL ) {
+        currentDirectory = [self.fileURL URLByDeletingLastPathComponent];
+    } else {
+        currentDirectory = [NSURL URLWithString:NSTemporaryDirectory()];
+    }
 
     if([markDown countOfString:@"{"] == [markDown countOfString:@"}"]) {
         //loop for parts of diag
         NSError *error;
         NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
         NSArray *matches;
-        while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
+        int count = 0;
+        while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)]
+                count] > 0) {
+
             NSTextCheckingResult *match = matches[0];
 
             NSString *diag = [markDown substringWithRange:match.range];
@@ -104,10 +164,17 @@
             }
             command = [LDUtils pathTo:command];
 
-            //don't want to use image cache, so create filename by arc4random
-            NSString *outPath = [NSString stringWithFormat:@"%@%u.png", NSTemporaryDirectory(), arc4random()];
+            NSString *directory = [NSString stringWithFormat:@"%@/diagrams", currentDirectory.path];
 
-            [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ --size=2048x2048 -o %@ /dev/stdin", diag, command, outPath]]];
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            if(![fileManager fileExistsAtPath:directory]) {
+                [fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
+            }
+            //don't want to use image cache, so create filename by arc4random
+            count = count + 1;
+            NSString *outPath = [NSString stringWithFormat:@"%@/%04d.svg", directory, count];
+
+            [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ -Tsvg -o %@ /dev/stdin", diag, command, outPath]]];
 
             [echo launch];
 
@@ -128,12 +195,16 @@
             };
         };
     }
-    
+
+    NSString *externalFilePath = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
     NSString *html = markDown.flavoredHTMLStringFromMarkdown;
-    html = [NSString stringWithFormat:NSLocalizedString(@"%@%@base.html", nil), html];
+    html = [NSString stringWithFormat:NSLocalizedString(@"%@%@%@base.html", nil),
+            externalFilePath,
+            externalFilePath,
+            html];
 
     // at this time, <img> has no 'src' attribute
-    [[self.webView mainFrame] loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
+    [[self.webView mainFrame] loadHTMLString:html baseURL:currentDirectory];
 }
 
 @end
