@@ -42,7 +42,7 @@
 		return;
 	}
 
-	[self.textView setString:markdown];
+	[self.textView setString:[self imagesToDiagramBlocks:markdown]];
     [self textViewContentToWebView];
 }
 
@@ -51,9 +51,60 @@
     return YES;
 }
 
+- (NSString *)imagesToDiagramBlocks:(NSString *)text
+{
+    NSMutableString *markdown = [NSMutableString stringWithString:text];
+
+    NSRegularExpression *re;
+    NSError *error;
+    NSString *template;
+
+    //comment in diagram block
+    re = [NSRegularExpression regularExpressionWithPattern:@"^<!--\n((blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\})\n-->" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    template = @"$1";
+    [re replaceMatchesInString:markdown options:0 range:NSMakeRange(0, markdown.length) withTemplate:template];
+
+    re = [NSRegularExpression regularExpressionWithPattern:@"\n^!\\[image]\\(diagrams.*?$" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    template = @"";
+    [re replaceMatchesInString:markdown options:0 range:NSMakeRange(0, markdown.length) withTemplate:template];
+
+    return (NSString *)markdown;
+}
+
+- (NSString *)diagramBlocksToImages:(NSString *)text
+{
+    NSMutableString *markdown = [NSMutableString stringWithString:text];
+
+    //comment out diagram block and add image syntax
+    NSError *error;
+    NSRegularExpression *re;
+    NSString *template;
+    re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    template = @"<!--\n$0\n-->\n![image](diagrams/0000.svg)";
+    [re replaceMatchesInString:markdown options:0 range:NSMakeRange(0, markdown.length) withTemplate:template];
+
+
+    //replace diagram filename number
+    re = [NSRegularExpression regularExpressionWithPattern:@"diagrams\\/(0000).svg" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
+    NSArray *matches;
+    int count = 0;
+    while([matches = [re matchesInString:markdown options:0 range:NSMakeRange(0, markdown.length)] count] > 0) {
+        NSTextCheckingResult *match = matches[0];
+
+        count = count + 1;
+        template = [NSString stringWithFormat:@"%04d", count];
+
+        [markdown replaceCharactersInRange:[match rangeAtIndex:1] withString:template];
+        NSLog(@"%@", markdown);
+    }
+
+    return (NSString *)markdown;
+}
+
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-	NSString *markdown = [self.textView string];
+    NSString *markdown = [self diagramBlocksToImages:[self.textView string]];
+
 	NSData *data = [markdown dataUsingEncoding:NSUTF8StringEncoding];
 	return data;
 }
