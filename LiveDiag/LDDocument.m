@@ -81,13 +81,22 @@
 -(void)textViewContentToWebView
 {
     NSString *markDown = [self.textView.textStorage string];
+    NSURL *currentDirectory;
+    if(self.fileURL ) {
+        currentDirectory = [self.fileURL URLByDeletingLastPathComponent];
+    } else {
+        currentDirectory = [NSURL URLWithString:NSTemporaryDirectory()];
+    }
 
     if([markDown countOfString:@"{"] == [markDown countOfString:@"}"]) {
         //loop for parts of diag
         NSError *error;
         NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(blockdiag|seqdiag|actdiag|nwdiag|rackdiag|)(\\s|)\\{.*?^\\}" options:NSRegularExpressionDotMatchesLineSeparators|NSRegularExpressionAnchorsMatchLines error:&error];
         NSArray *matches;
-        while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)] count] > 0) {
+        int count = 0;
+        while ([matches = [re matchesInString:markDown options:0 range:NSMakeRange(0, markDown.length)]
+                count] > 0) {
+
             NSTextCheckingResult *match = matches[0];
 
             NSString *diag = [markDown substringWithRange:match.range];
@@ -104,8 +113,15 @@
             }
             command = [LDUtils pathTo:command];
 
+            NSString *directory = [NSString stringWithFormat:@"%@/diagrams", currentDirectory.path];
+
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            if(![fileManager fileExistsAtPath:directory]) {
+                [fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
+            }
             //don't want to use image cache, so create filename by arc4random
-            NSString *outPath = [NSString stringWithFormat:@"%@%u.svg", NSTemporaryDirectory(), arc4random()];
+            count = count + 1;
+            NSString *outPath = [NSString stringWithFormat:@"%@/%04d.svg", directory, count];
 
             [echo setArguments:@[@"-c", [NSString stringWithFormat:@"echo \"%@\" | %@ -Tsvg -o %@ /dev/stdin", diag, command, outPath]]];
 
@@ -128,12 +144,16 @@
             };
         };
     }
-    
+
+    NSString *externalFilePath = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
     NSString *html = markDown.flavoredHTMLStringFromMarkdown;
-    html = [NSString stringWithFormat:NSLocalizedString(@"%@%@base.html", nil), html];
+    html = [NSString stringWithFormat:NSLocalizedString(@"%@%@%@base.html", nil),
+            externalFilePath,
+            externalFilePath,
+            html];
 
     // at this time, <img> has no 'src' attribute
-    [[self.webView mainFrame] loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
+    [[self.webView mainFrame] loadHTMLString:html baseURL:currentDirectory];
 }
 
 @end
