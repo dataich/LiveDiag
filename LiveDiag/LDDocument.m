@@ -139,6 +139,13 @@
         currentDirectory = [NSURL URLWithString:NSTemporaryDirectory()];
     }
 
+    NSString *directory = [NSString stringWithFormat:@"%@/diagrams", currentDirectory.path];
+
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYYMMddhhmmss"];
+    NSDate* date_source = [NSDate date];
+    NSString *timestamp = [formatter stringFromDate:date_source];
+
     if([markDown countOfString:@"{"] == [markDown countOfString:@"}"]) {
         //loop for parts of diag
         NSError *error;
@@ -164,8 +171,6 @@
             }
             command = [LDUtils pathTo:command];
 
-            NSString *directory = [NSString stringWithFormat:@"%@/diagrams", currentDirectory.path];
-
             NSFileManager *fileManager = [NSFileManager defaultManager];
             if(![fileManager fileExistsAtPath:directory]) {
                 [fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
@@ -181,7 +186,7 @@
             int pid = echo.processIdentifier;
 
             // temporarily, convert diag part to <img id='{process identifier}' prepareSrc='{file path}'>
-            NSString *imgTag = [NSString stringWithFormat:@"<img id='%d' prepareSrc='%@'>", pid, outPath];
+            NSString *imgTag = [NSString stringWithFormat:@"<img id='%d' prepareSrc='%@?timestamp=%@'>", pid, outPath, timestamp];
             markDown = [markDown stringByReplacingCharactersInRange:match.range withString:imgTag];
 
             __block __weak LDDocument *weakSelf = self;
