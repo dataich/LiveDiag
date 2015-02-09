@@ -1,0 +1,10 @@
+PODS:
+  - GHMarkdownParser (0.0.1)
+
+DEPENDENCIES:
+  - GHMarkdownParser (~> 0.0.1)
+
+SPEC CHECKSUMS:
+  GHMarkdownParser: 52baf6413173a4c18e4b45731907c24e0f17b247
+
+COCOAPODS: 0.35.0

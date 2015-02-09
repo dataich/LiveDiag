@@ -30,10 +30,7 @@ all block code from [blockdiag.com](http://blockdiag.com/). Thanks!!
 
 ## Release
 
-- [1.2.0](https://github.com/dataich/LiveDiag/releases/tag/1.2.0)
-- [1.1.1](https://github.com/dataich/LiveDiag/releases/tag/1.1.1)
-- [1.1.0](https://github.com/dataich/LiveDiag/releases/tag/1.1.0)
-- [1.0.0](https://github.com/dataich/LiveDiag/releases/tag/1.0.0)
+[Releases · dataich/LiveDiag](https://github.com/dataich/LiveDiag/releases)
 
 ## Feature
 
