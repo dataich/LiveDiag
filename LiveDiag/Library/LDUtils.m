@@ -31,10 +31,12 @@
     [task setArguments:args];
     [task launch];
     [task waitUntilExit];
-
     NSData *data = pipe.fileHandleForReading.availableData;
     NSString *path = [NSString stringWithFormat:@"%s", data.bytes];
-    path = [path stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSArray *paths = [path componentsSeparatedByString:@"\n"];
+    if (paths.count > 0) {
+        path = paths[0];
+    }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:path forKey:[NSString stringWithFormat:@"path_%@", command]];
     return path;
