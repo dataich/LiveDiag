@@ -10,6 +10,7 @@
 
 @interface LDUtils : NSObject
 
++ (BOOL)checkPaths;
 + (NSString *)pathTo:(NSString *)command;
 
 @end
